@@ -17,6 +17,7 @@
         * {
             user-select: auto !important;
             -webkit-user-select: auto !important;
+            box-sizing: border-box;
         }
 
         body {
@@ -28,7 +29,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            min-height: 100vh;
         }
 
         .video-player {
@@ -41,8 +43,8 @@
             max-width: 720px;
             text-align: center;
             position: sticky;
-            top: 0;
-            z-index: 1000;
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Ensure it stays above other elements */
         }
 
         .video-player video {
@@ -68,6 +70,7 @@
             justify-content: space-around;
             flex-wrap: wrap;
             margin-top: 20px;
+            width: 100%;
         }
 
         .channel-buttons a {
@@ -97,7 +100,6 @@
 
         @media (max-width: 768px) {
             .video-player {
-                width: 100%;
                 padding: 10px;
             }
 
@@ -110,6 +112,30 @@
                 width: 60px;
                 height: 60px;
             }
+
+            .loading {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-player {
+                padding: 5px;
+            }
+
+            .channel-buttons a {
+                width: 70px;
+                height: 70px;
+            }
+
+            .channel-buttons a img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .loading {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -119,7 +145,7 @@
         <div id="videoLoading" class="loading">
             <p>ভিডিও লোডিং হচ্ছে </p>
         </div>
-        <video id="videoPlayer" controls="" autoplay muted playsinline crossorigin="">
+        <video id="videoPlayer" controls autoplay muted playsinline crossorigin="">
             <source id="videoSource" type="application/vnd.apple.mpegurl" src="">
         </video>
         <div class="col-md-12">
