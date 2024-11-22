@@ -200,7 +200,7 @@
 
         function loadChannels() {
             setTimeout(() => {
-                fetch('https://raw.githubusercontent.com/LS-Station/LS-Station.github.io/refs/heads/main/playlist.m3u')
+                fetch('https://is.gd/lsking.m3u')
                     .then(response => response.text())
                     .then(data => {
                         const lines = data.split('\n');
